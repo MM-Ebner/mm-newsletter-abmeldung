@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achtung - Newsletter Abmeldelink</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #FFFFFF;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Animated background pattern */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 156, 221, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(140, 92, 188, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(48, 177, 228, 0.03) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 40px rgba(0, 156, 221, 0.1),
+                0 0 0 1px rgba(0, 156, 221, 0.1);
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 0.9; }
+        }
+        
+        h1 {
+            color: #000000;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.3;
+            animation: slideIn 0.7s ease-out 0.2s both;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .warning-text {
+            color: #7A7A7A;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            animation: slideIn 0.7s ease-out 0.3s both;
+        }
+        
+        .emoji {
+            font-size: 72px;
+            margin: 20px 0;
+            animation: shake 2s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            10% { transform: translateX(-2px) rotate(-5deg); }
+            20% { transform: translateX(2px) rotate(5deg); }
+            30% { transform: translateX(-2px) rotate(-5deg); }
+            40% { transform: translateX(0) rotate(0deg); }
+        }
+        
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent,
+                #009CDD 20%,
+                #30B1E4 50%,
+                #8C5CBC 80%,
+                transparent
+            );
+            margin: 35px 0;
+            border-radius: 2px;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; transform: scaleX(0.8); }
+            50% { opacity: 1; transform: scaleX(1); }
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, rgba(0, 156, 221, 0.05), rgba(140, 92, 188, 0.05));
+            border-left: 4px solid #009CDD;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            animation: slideIn 0.7s ease-out 0.4s both;
+        }
+        
+        .tip-title {
+            color: #009CDD;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .tip-text {
+            color: #7A7A7A;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #009CDD, #30B1E4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 156, 221, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .button:hover {
+            background: linear-gradient(135deg, #30B1E4, #8C5CBC);
+            box-shadow: 0 6px 20px rgba(140, 92, 188, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .footer-text {
+            color: #7A7A7A;
+            font-size: 12px;
+            margin-top: 40px;
+            opacity: 0.7;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .warning-text {
+                font-size: 16px;
+            }
+            
+            .emoji {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Ebner Media Group Logo -->
+        <img src="https://ebnermedia.de/wp-content/uploads/2025/04/Ebner-Logo_Vektor_3zeilig_schwarz.png" alt="Ebner Media Group" class="logo">
+        
+        <h1>Ups! Sie haben einen Newsletter-Abmeldelink angeklickt</h1>
+        
+        <div class="emoji">😞</div>
+        
+        <p class="warning-text">
+            Bitte klicken Sie nicht auf jeden Link, den man Ihnen zusendet – 
+            besonders nicht auf verdächtige Abmeldelinks!
+        </p>
+        
+        <div class="divider"></div>
+        
+        <div class="tip-box">
+            <div class="tip-title">💡 Sicherheitstipp</div>
+            <div class="tip-text">
+                Prüfen Sie immer die Absenderadresse und überlegen Sie zweimal, 
+                bevor Sie auf Links in E-Mails klicken. Ihre Daten und Newsletter-Abonnements 
+                werden es Ihnen danken!
+            </div>
+        </div>
+        
+        <a href="#" class="button" onclick="alert('Das war nur ein Test! 😉'); return false;">
+            Ich habe verstanden
+        </a>
+        
+        <p class="footer-text">
+            Diese Seite dient nur zu Demonstrationszwecken.<br>
+            Keine echten Newsletter wurden abgemeldet.
+        </p>
+    </div>
+</body>
+</html>
